@@ -1,95 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Name | Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nitish Adi Reddy | Senior Software Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+    :root {
+      --primary: #4a90e2;
+      --accent: #50E3C2;
+      --dark: #1a1a1a;
+      --light: #ffffff;
+      --gray: #f5f5f5;
+      --shadow: rgba(0, 0, 0, 0.1);
     }
-    header {
-      background-color: #1e1e1e;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 3em;
-    }
-    header p {
-      margin: 10px 0 0;
-      font-size: 1.2em;
-      color: #ccc;
-    }
-    section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-      margin-bottom: 20px;
-      color: #444;
-    }
-    .projects a {
-      display: block;
-      text-decoration: none;
-      color: #1e90ff;
-      margin: 10px 0;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      background-color: #eee;
-    }
-    .contact a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #1e1e1e;
-      font-weight: bold;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--gray); color: var(--dark); line-height: 1.6; }
+    nav { position: sticky; top: 0; background: var(--light); padding: 1rem 2rem; box-shadow: 0 2px 10px var(--shadow); z-index:10; display:flex; justify-content:center; gap:2rem; }
+    nav a { text-decoration:none; color:var(--dark); font-weight:600; transition: color 0.3s; }
+    nav a:hover { color: var(--primary); }
+    header { background:linear-gradient(135deg,var(--primary),var(--accent)); color:var(--light); padding:4rem 2rem; text-align:center; }
+    header h1{font-size:3rem; font-weight:800;} header p{margin-top:1rem; font-size:1.25rem;}
+    section{padding:4rem 2rem; max-width:1000px; margin:auto;}
+    h2{color:var(--primary); margin-bottom:1rem; font-size:2rem;}
+    .card { background:var(--light); padding:1.5rem; border-radius:12px; box-shadow:0 4px 20px var(--shadow); margin-bottom:2rem; transition: transform 0.3s; }
+    .card:hover { transform: translateY(-5px); }
+    .timeline-chart { max-width:700px; margin:2rem auto; opacity:0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .org-experience { display: grid; gap:1.5rem; margin-top:2rem; }
+    .org-block { background: var(--light); padding:1.5rem; border-radius:12px; box-shadow:0 4px 20px var(--shadow); }
+    .org-block h3 { color: var(--primary); margin-bottom:0.5rem; }
+    .footer { text-align:center; padding:2rem; font-size:0.9rem; color:#777; }
+    .social { display:flex; justify-content:center; gap:1rem; font-size:1rem; }
+    .social a { display:flex; align-items:center; text-decoration:none; color:var(--dark); transition:color 0.3s; }
+    .social a:hover { color:var(--primary); }
+    .social svg { margin-right:0.5rem; }
   </style>
 </head>
 <body>
-
+  <nav>
+    <a href="#about">About</a>
+    <a href="#growth">Growth</a>
+    <a href="#education">Education</a>
+    <a href="#publications">Publications</a>
+    <a href="#contact">Contact</a>
+  </nav>
   <header>
-    <h1>Your Name</h1>
-    <p>Software Engineer | Automation Enthusiast | Cloud Native Developer</p>
+    <h1>Nitish Adi Reddy</h1>
+    <p>Senior Software Engineer @ Principal Asset Management</p>
   </header>
 
-  <section>
+  <section id="about">
     <h2>About Me</h2>
-    <p>
-      I'm a passionate software engineer who loves building automation tools, cloud-native apps, and solving real-world problems through code. I work primarily with AWS, GitHub APIs, and serverless architectures.
-    </p>
+    <div class="card">
+      <p>I'm a seasoned software engineer who transforms complex challenges into scalable solutions. With roots in electronics and expertise in AWS, Python, and integration, I drive efficiency and innovation across systems.</p>
+    </div>
   </section>
 
-  <section class="projects">
-    <h2>Projects</h2>
-    <a href="https://github.com/your-username/project-one" target="_blank">🔧 Project One – GitHub Automation Tool</a>
-    <a href="https://github.com/your-username/project-two" target="_blank">📊 Project Two – Serverless Compliance Dashboard</a>
-    <a href="https://github.com/your-username/project-three" target="_blank">🌐 Project Three – Full-Stack Rental Management App</a>
+  <section id="growth">
+    <h2>Career Growth</h2>
+    <div class="timeline-chart" id="chartContainer">
+      <canvas id="growthChart"></canvas>
+    </div>
+    <div class="org-experience">
+      <div class="org-block">
+        <h3>Principal Asset Management</h3>
+        <ul>
+          <li><strong>Analyst</strong> (Jul 2022 – Jun 2023)</li>
+          <li><strong>Software Engineer</strong> (Jun 2023 – Mar 2025)</li>
+          <li><strong>Senior Software Engineer</strong> (Mar 2025 – Present)</li>
+        </ul>
+      </div>
+      <div class="org-block">
+        <h3>Pravaig Dynamics</h3>
+        <ul>
+          <li><strong>Electronics Engineer Intern</strong> (Dec 2021 – Feb 2022)</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
-  <section class="contact">
+  <section id="education">
+    <h2>Education</h2>
+    <div class="card">
+      <h3>B.E. (Hons.), Electronics & Communication</h3>
+      <p><strong>Visvesvaraya Technological University</strong> | 2018 – 2022</p>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+    <div class="card">
+      <h3>Factory Inventory Automation</h3>
+      <p>IEEE, Mar 2022</p>
+      <p>IoT, AI & cloud for real-time factory inventory management.</p>
+    </div>
+    <div class="card">
+      <h3>Traffic Light Controller (45nm)</h3>
+      <p>IEEE, Feb 2022</p>
+      <p>Verilog HDL simulation for efficient urban traffic control.</p>
+    </div>
+  </section>
+
+  <section id="contact">
     <h2>Contact</h2>
-    <p>
-      <a href="mailto:your.email@example.com">Email</a> |
-      <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a> |
-      <a href="https://github.com/your-username" target="_blank">GitHub</a>
-    </p>
+    <div class="social">
+      <a href="https://www.linkedin.com/in/nitishadireddy/" target="_blank">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.1 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4v16h-4V8zm7.5 0h3.7v2.2h.1c.5-.9 1.7-1.9 3.5-1.9C19.3 8.3 22 10.7 22 15.3V24h-4v-8.1c0-1.9-.1-4.3-2.7-4.3-2.7 0-3.1 2.1-3.1 4.1V24h-4V8z"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:nitishadirreddy@gmail.com">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 13.5l-11-7V20h22V6.5l-11 7zm11-9.5H1l11 7 11-7z"/></svg>
+        nitishadireddy@gmail.com
+      </a>
+      <a href="tel:+917338613318">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.2.5 2.5.77 3.83.77a1 1 0 011 1v3.0a1 1 0 01-1 1C10.07 22 2 13.93 2 3a1 1 0 011-1h3.5a1 1 0 011 1c0 1.33.27 2.63.77 3.83a1 1 0 01-.21 1.11l-2.2 2.2z"/></svg>
+        +91 98765 43210
+      </a>
+    </div>
   </section>
 
-  <footer>
-    © 2025 Your Name. Built with ❤️ and GitHub Pages.
+  <footer class="footer">
+    © 2025 Nitish Adi Reddy. Crafted for recruiters who spot talent at first glance.
   </footer>
 
+  <script>
+    // Animate chart when scrolled into view
+    const chartContainer = document.getElementById('chartContainer');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.getElementById('growthChart').getContext('2d');
+          chartContainer.style.opacity = 1;
+          chartContainer.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(chartContainer);
+
+    // Initialize chart
+    const ctx = document.getElementById('growthChart').getContext('2d');
+    const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+    gradient.addColorStop(0, 'rgba(74,144,226,0.5)');
+    gradient.addColorStop(1, 'rgba(80,227,194,0.1)');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jul 2022', 'Jun 2023', 'Mar 2025'],
+        datasets: [{
+          label: 'Career Level',
+          data: [1, 2, 3],
+          fill: true,
+          backgroundColor: gradient,
+          borderColor: 'var(--primary)',
+          borderWidth: 3,
+          pointBackgroundColor: 'var(--accent)',
+          pointBorderColor: 'var(--primary)',
+          pointRadius: 8,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        animation: { duration: 1500, easing: 'easeOutQuart' },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 4,
+            ticks: { stepSize: 1, callback: val => ['','Analyst','Software Eng.','Senior Eng.'][val] }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: { enabled: true, callbacks: { label: context => context.parsed.y === 1 ? 'Analyst' : context.parsed.y === 2 ? 'Software Engineer' : 'Senior Engineer' } }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
